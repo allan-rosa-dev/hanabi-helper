@@ -11,6 +11,13 @@
 		9C0120CD2A658B0A007CD87C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0120CC2A658B0A007CD87C /* ContentView.swift */; };
 		9C0120CF2A658B0B007CD87C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C0120CE2A658B0B007CD87C /* Assets.xcassets */; };
 		9C0120D22A658B0B007CD87C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C0120D12A658B0B007CD87C /* Preview Assets.xcassets */; };
+		9C0120D92A658D7E007CD87C /* HanabiCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0120D82A658D7E007CD87C /* HanabiCore.swift */; };
+		9C0120DB2A658D8E007CD87C /* GameCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0120DA2A658D8E007CD87C /* GameCard.swift */; };
+		9C0120DD2A658DBD007CD87C /* GameColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0120DC2A658DBD007CD87C /* GameColor.swift */; };
+		9C0120DF2A658DC7007CD87C /* GameNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0120DE2A658DC7007CD87C /* GameNumber.swift */; };
+		9C0120E12A658FD7007CD87C /* GameMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0120E02A658FD7007CD87C /* GameMatch.swift */; };
+		9C0120E32A6595B0007CD87C /* GameMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0120E22A6595B0007CD87C /* GameMode.swift */; };
+		9C0120E52A6598A7007CD87C /* Deck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C0120E42A6598A7007CD87C /* Deck.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +26,13 @@
 		9C0120CC2A658B0A007CD87C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		9C0120CE2A658B0B007CD87C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9C0120D12A658B0B007CD87C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9C0120D82A658D7E007CD87C /* HanabiCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HanabiCore.swift; sourceTree = "<group>"; };
+		9C0120DA2A658D8E007CD87C /* GameCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCard.swift; sourceTree = "<group>"; };
+		9C0120DC2A658DBD007CD87C /* GameColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameColor.swift; sourceTree = "<group>"; };
+		9C0120DE2A658DC7007CD87C /* GameNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNumber.swift; sourceTree = "<group>"; };
+		9C0120E02A658FD7007CD87C /* GameMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMatch.swift; sourceTree = "<group>"; };
+		9C0120E22A6595B0007CD87C /* GameMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameMode.swift; sourceTree = "<group>"; };
+		9C0120E42A6598A7007CD87C /* Deck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deck.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +69,13 @@
 				9C0120CC2A658B0A007CD87C /* ContentView.swift */,
 				9C0120CE2A658B0B007CD87C /* Assets.xcassets */,
 				9C0120D02A658B0B007CD87C /* Preview Content */,
+				9C0120D82A658D7E007CD87C /* HanabiCore.swift */,
+				9C0120E02A658FD7007CD87C /* GameMatch.swift */,
+				9C0120E42A6598A7007CD87C /* Deck.swift */,
+				9C0120DA2A658D8E007CD87C /* GameCard.swift */,
+				9C0120DC2A658DBD007CD87C /* GameColor.swift */,
+				9C0120DE2A658DC7007CD87C /* GameNumber.swift */,
+				9C0120E22A6595B0007CD87C /* GameMode.swift */,
 			);
 			path = HanabiHelper;
 			sourceTree = "<group>";
@@ -137,8 +158,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9C0120E52A6598A7007CD87C /* Deck.swift in Sources */,
+				9C0120E32A6595B0007CD87C /* GameMode.swift in Sources */,
+				9C0120DB2A658D8E007CD87C /* GameCard.swift in Sources */,
+				9C0120DD2A658DBD007CD87C /* GameColor.swift in Sources */,
+				9C0120DF2A658DC7007CD87C /* GameNumber.swift in Sources */,
 				9C0120CD2A658B0A007CD87C /* ContentView.swift in Sources */,
 				9C0120CB2A658B0A007CD87C /* HanabiHelperApp.swift in Sources */,
+				9C0120D92A658D7E007CD87C /* HanabiCore.swift in Sources */,
+				9C0120E12A658FD7007CD87C /* GameMatch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
