@@ -14,7 +14,7 @@ struct GameView: View {
     var body: some View {
         ZStack {
             // MARK: - Background Color
-            Color.black
+            K.backgroundColor
                 .ignoresSafeArea()
             VStack {
                 CardFrontView(card: gameMatch.lastCard)
@@ -48,7 +48,7 @@ struct GameView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct GameView_Previews: PreviewProvider {
     static let gameMatchMock = GameMatch(numberOfPlayers: 2, gameMode: .regular)
 
     static var previews: some View {

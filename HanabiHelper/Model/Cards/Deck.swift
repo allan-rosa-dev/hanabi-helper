@@ -14,22 +14,11 @@ struct Deck {
     init(for gameMode: GameMode) {
         cards = generateDeck(for: gameMode)
         discardPile = []
-
-//        switch gameMode {
-//        case .extraSuitFull, .extraSuitWildcard:
-//            let wildCards: [GameCard] = []
-//            cards.append(contentsOf: wildCards)
-//        case .extraSuitSingle:
-//            let wildCards: [GameCard] = []
-//            cards.append(contentsOf: wildCards)
-//        default:
-//            print("--")
-//        }
     }
 
     func displayDeck() {
         cards.forEach { card in
-            print(card)
+            print(card.color, card.number, separator: ", ")
         }
     }
 
@@ -40,7 +29,7 @@ struct Deck {
     mutating func draw() -> GameCard? {
         guard !cards.isEmpty, let topCard = cards.first else { return nil }
         cards.remove(at: 0)
-        print(topCard)
+        print("Your draw: [\(topCard.color), \(topCard.number)]")
         return topCard
     }
 }
@@ -48,7 +37,7 @@ struct Deck {
 fileprivate func generateDeck(for gameMode: GameMode) -> [GameCard] {
     var deck = [GameCard]()
 
-    GameColor.allCases.forEach { color in
+    CardColor.allCases.forEach { color in
         switch color {
         case .blue, .green, .red, .yellow, .white:
             deck.append(contentsOf: generateCards(of: color))
@@ -58,7 +47,7 @@ fileprivate func generateDeck(for gameMode: GameMode) -> [GameCard] {
                 break
             case .extraSuitWildcard, .extraSuitFull:
                 deck.append(contentsOf: generateCards(of: color))
-            case .extraSuitSingle:
+            case .extraSuitSingle: // We manually append those because it's an exception of the deck generation rule
                 deck.append(contentsOf: [GameCard(color: .multicolor, number: .one),
                                          GameCard(color: .multicolor, number: .two),
                                          GameCard(color: .multicolor, number: .three),
@@ -72,10 +61,10 @@ fileprivate func generateDeck(for gameMode: GameMode) -> [GameCard] {
     return deck
 }
 
-fileprivate func generateCards(of color: GameColor) -> [GameCard] {
+fileprivate func generateCards(of color: CardColor) -> [GameCard] {
     var cards = [GameCard]()
 
-    GameNumber.allCases.forEach { number in
+    CardNumber.allCases.forEach { number in
         switch number {
         case .one:
             cards.append(contentsOf: [GameCard](repeating: GameCard(color: color, number: number), count: 3))
