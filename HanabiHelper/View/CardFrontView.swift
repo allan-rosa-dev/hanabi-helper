@@ -11,8 +11,6 @@ struct CardFrontView: View {
 
     // MARK: - Attributes
     @ObservedObject var card: GameCard
-    @State var isBlank = false
-
     @State private var flip = false
 
     // MARK: - Init
@@ -20,23 +18,20 @@ struct CardFrontView: View {
         if let card {
             self.card = card
         } else {
-            self.card = GameCard(color: .white, number: .five)
+            self.card = GameCard(color: .multicolor, number: .invalid(text: "?"))
         }
     }
 
     // MARK: - Helper Functions
 
-    func getColor() -> Color {
-        guard !isBlank else {
-            return Color.mint
+    private func getColor() -> Color {
+        if case .invalid(_) = card.number {
+            return Color.pink
         }
         return card.color.color()
     }
 
-    func getNumber() -> String {
-        guard !isBlank else {
-            return "?"
-        }
+    private func getNumber() -> String {
         return card.number.description()
     }
 
@@ -44,11 +39,10 @@ struct CardFrontView: View {
     var body: some View {
         // MARK: - Card's graphical elements
         ZStack {
-            K.backgroundColor
-                .ignoresSafeArea()
+            Color.white
+                .opacity(0.0)
             RoundedRectangle(cornerRadius: 20)
                 .fill(getColor())
-                .frame(width: .infinity, height: .infinity)
                 .rotation3DEffect(.degrees(flip ? 0 : 180), axis: (x: 0, y: 1, z:0))
             Text(getNumber())
                 .font(.largeTitle)

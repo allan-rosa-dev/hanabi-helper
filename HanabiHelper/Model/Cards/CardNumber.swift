@@ -8,7 +8,10 @@
 import Foundation
 
 enum CardNumber: CaseIterable {
+    static var allCases: [CardNumber] = [.one, .two, .three, .four, .five]
+
     case one, two, three, four, five
+    case invalid(text: String)
 
     func description() -> String {
         switch self {
@@ -22,6 +25,8 @@ enum CardNumber: CaseIterable {
             return "4"
         case .five:
             return "5"
+        case .invalid(text: let text):
+            return text
         }
     }
 }
