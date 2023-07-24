@@ -11,7 +11,9 @@ struct CardBackView: View {
     var body: some View {
         ZStack {
             K.backgroundColor
-                .ignoresSafeArea()
+                .opacity(0.0)
+            RoundedRectangle(cornerRadius: 20)
+                .fill(.orange)
         }
     }
 }

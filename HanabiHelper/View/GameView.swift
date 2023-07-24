@@ -17,7 +17,7 @@ struct GameView: View {
             K.backgroundColor
                 .ignoresSafeArea()
             VStack {
-                CardFrontView(card: gameMatch.lastCard)
+                CardView(card: gameMatch.lastCard)
 
                 Button("Draw!") {
                     gameMatch.playCard()

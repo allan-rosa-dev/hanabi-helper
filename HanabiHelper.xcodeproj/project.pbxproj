@@ -21,6 +21,7 @@
 		9C66D2A52A6873EC008055A0 /* CardFrontView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66D2A42A6873EC008055A0 /* CardFrontView.swift */; };
 		9C66D2AA2A68BCB9008055A0 /* CardBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66D2A92A68BCB9008055A0 /* CardBackView.swift */; };
 		9C66D2AC2A68BD95008055A0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C66D2AB2A68BD95008055A0 /* Constants.swift */; };
+		9C9266CA2A69A3FF0013BBB9 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9266C92A69A3FF0013BBB9 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		9C66D2A42A6873EC008055A0 /* CardFrontView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFrontView.swift; sourceTree = "<group>"; };
 		9C66D2A92A68BCB9008055A0 /* CardBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardBackView.swift; sourceTree = "<group>"; };
 		9C66D2AB2A68BD95008055A0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		9C9266C92A69A3FF0013BBB9 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				9C0120CC2A658B0A007CD87C /* GameView.swift */,
+				9C9266C92A69A3FF0013BBB9 /* CardView.swift */,
 				9C66D2A42A6873EC008055A0 /* CardFrontView.swift */,
 				9C66D2A92A68BCB9008055A0 /* CardBackView.swift */,
 			);
@@ -206,6 +209,7 @@
 				9C66D2A52A6873EC008055A0 /* CardFrontView.swift in Sources */,
 				9C0120DF2A658DC7007CD87C /* CardNumber.swift in Sources */,
 				9C66D2AA2A68BCB9008055A0 /* CardBackView.swift in Sources */,
+				9C9266CA2A69A3FF0013BBB9 /* CardView.swift in Sources */,
 				9C0120CD2A658B0A007CD87C /* GameView.swift in Sources */,
 				9C0120CB2A658B0A007CD87C /* HanabiHelperApp.swift in Sources */,
 				9C0120D92A658D7E007CD87C /* HanabiCore.swift in Sources */,
