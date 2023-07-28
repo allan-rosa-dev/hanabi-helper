@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct CardView: View {
+    // MARK: - Attributes
     @ObservedObject var card: GameCard
     @State private var isFacingFront: Bool
     @State private var animate3d: Bool
 
+    // MARK: - Init
     init(card: GameCard?) {
         self.isFacingFront = true
         self.animate3d = false
@@ -23,8 +25,7 @@ struct CardView: View {
         }
     }
 
-
-
+    // MARK: - Design
     var body: some View {
 
         let flipDegrees = isFacingFront ? 180.0 : 0.0

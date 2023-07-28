@@ -7,12 +7,19 @@
 
 import Foundation
 
-class GameCard: ObservableObject {
+class GameCard: ObservableObject, Identifiable {
+    // MARK: - Attributes
     let color: CardColor
     let number: CardNumber
 
+    // MARK: - Init
     init(color: CardColor, number: CardNumber) {
         self.color = color
         self.number = number
+    }
+
+    // MARK: - Methods
+    func description() -> String {
+        return "[\(color.description()) \(number.description())]"
     }
 }

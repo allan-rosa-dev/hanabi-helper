@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct GameView: View {
+    // MARK: - Attributes
     @ObservedObject var gameMatch: GameMatch = GameMatch(numberOfPlayers: 2, gameMode: .regular)
     @State var text: String = "Nothing here yet"
 
+    // MARK: - Design
     var body: some View {
         ZStack {
             // MARK: - Background Color
@@ -30,7 +32,7 @@ struct GameView: View {
                 .buttonBorderShape(ButtonBorderShape.capsule)
                 
                 Button("Print Deck") {
-                    print("-- Deck has \(gameMatch.deck.cards.count) cards --")
+                    print("-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --")
                     gameMatch.printDeck()
                     print("__ Deck has \(gameMatch.deck.cards.count) cards __")
                 }
@@ -48,6 +50,7 @@ struct GameView: View {
     }
 }
 
+// MARK: - Preview
 struct GameView_Previews: PreviewProvider {
     static let gameMatchMock = GameMatch(numberOfPlayers: 2, gameMode: .regular)
 

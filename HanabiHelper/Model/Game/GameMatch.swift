@@ -8,6 +8,7 @@
 import Foundation
 
 class GameMatch: ObservableObject {
+    // MARK: - Attributes
     var deck: Deck
     var hints: Int // Max. 8
     var strikes: Int // When Strikes reach 0 you lose
@@ -16,6 +17,7 @@ class GameMatch: ObservableObject {
 
     @Published var lastCard: GameCard?
 
+    // MARK: - Init
     init(numberOfPlayers: Int, gameMode: GameMode) {
         self.deck = Deck(for: gameMode)
         self.hints = 8
@@ -26,6 +28,7 @@ class GameMatch: ObservableObject {
         deck.shuffle()
     }
 
+    // MARK: - Methods
     func printDeck() {
         deck.displayDeck()
     }
@@ -33,4 +36,6 @@ class GameMatch: ObservableObject {
     func playCard() {
         lastCard = deck.draw()
     }
+
+    // MARK: - Helper Functions
 }

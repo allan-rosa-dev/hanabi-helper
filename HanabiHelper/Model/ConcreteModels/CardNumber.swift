@@ -7,12 +7,14 @@
 
 import Foundation
 
-enum CardNumber: CaseIterable {
-    static var allCases: [CardNumber] = [.one, .two, .three, .four, .five]
+enum CardNumber: CaseIterable, Equatable {
 
     case one, two, three, four, five
     case invalid(text: String)
 
+    static var allCases: [CardNumber] = [.one, .two, .three, .four, .five]
+
+    // MARK: - Methods
     func description() -> String {
         switch self {
         case .one:
