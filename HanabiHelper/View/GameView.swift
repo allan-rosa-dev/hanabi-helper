@@ -9,8 +9,11 @@ import SwiftUI
 
 struct GameView: View {
     // MARK: - Attributes
-    @ObservedObject var gameMatch: GameMatch = GameMatch(numberOfPlayers: 2, gameMode: .regular)
-    @State var text: String = "Nothing here yet"
+    @StateObject var gameMatch = GameMatch(config: GameConfiguration(numberOfPlayers: 2))
+
+    // MARK: - Init
+    init() {
+    }
 
     // MARK: - Design
     var body: some View {
@@ -20,30 +23,7 @@ struct GameView: View {
                 .ignoresSafeArea()
             VStack {
                 CardView(card: gameMatch.lastCard)
-
-                Button("Draw!") {
-                    gameMatch.playCard()
-                    text = "\(gameMatch.lastCard!.color) \(gameMatch.lastCard!.number)"
-                }
-                .padding()
-                .foregroundColor(.white)
-                .fontWeight(.black)
-                .font(.title)
-                .buttonBorderShape(ButtonBorderShape.capsule)
-                
-                Button("Print Deck") {
-                    print("-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --")
-                    gameMatch.printDeck()
-                    print("__ Deck has \(gameMatch.deck.cards.count) cards __")
-                }
-                .padding()
-                .foregroundColor(.yellow)
-                .fontWeight(.black)
-                .font(.headline)
-
-                Text(text)
-                    .foregroundColor(.white)
-                    .padding()
+                HintView()
             }
             .padding()
         }
@@ -52,7 +32,8 @@ struct GameView: View {
 
 // MARK: - Preview
 struct GameView_Previews: PreviewProvider {
-    static let gameMatchMock = GameMatch(numberOfPlayers: 2, gameMode: .regular)
+    static let gameConfig = GameConfiguration(numberOfPlayers: 2, gameMode: .regular)
+    static let gameMatchMock = GameMatch(config: gameConfig)
 
     static var previews: some View {
         GameView()

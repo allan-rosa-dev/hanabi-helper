@@ -34,7 +34,7 @@ struct CardPossibilityView: View {
                 )
                 .cornerRadius(Layout.cornerRadius)
 
-            Text(mark.description())
+            Text(mark.description)
         }
     }
 }

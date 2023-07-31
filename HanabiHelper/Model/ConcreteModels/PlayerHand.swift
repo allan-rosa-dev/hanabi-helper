@@ -8,30 +8,48 @@
 import Foundation
 
 class PlayerHand {
+    
     // MARK: - Attributes
     let cards: [CardGuesser]
+    var numberOfCardsInHand: Int
+    var selectedCards: [Int]
 
     // MARK: - Init
-    init(numberOfPlayers: Int, gameMode: GameMode) {
-        guard numberOfPlayers >= 2, numberOfPlayers <= 5 else {
-            cards = []
-            return
-        }
-
-        var numberOfCardsInHand: Int
-
-        let range_2P_3P = 2...3
-        let range_4P_5P = 4...5
-
-        if range_2P_3P.contains(numberOfPlayers) {
-            numberOfCardsInHand = 4
-        }
-        else {
-            numberOfCardsInHand = 5
-        }
-
-        cards = [CardGuesser](repeating: CardGuesser(gameMode: gameMode), count: numberOfCardsInHand)
+    init(for config: GameConfiguration) {
+        selectedCards = []
+        numberOfCardsInHand = K.standard.getPlayerHandSize(for: config.numberOfPlayers)
+        cards = [CardGuesser](repeating: CardGuesser(gameMode: config.gameMode), count: numberOfCardsInHand)
     }
 
     // MARK: - Methods
+    func selectCards(in positions: [Int]) {
+        print("Selecting cards in [\(positions.description)]")
+        guard !positions.isEmpty, (0...numberOfCardsInHand).contains(positions) else { return }
+
+        selectedCards = positions
+    }
+
+    func giveHint(_ hint: Hint) {
+        selectedCards.forEach { position in
+            cards[position].applyHint(hint)
+        }
+    }
+
+    func playCard(in position: Int) {
+        // Stub
+    }
+
+    func discardCard(in position: Int) {
+        // Stub
+    }
+}
+
+// MARK: - Equatable
+extension PlayerHand: Equatable {
+    static func == (lhs: PlayerHand, rhs: PlayerHand) -> Bool {
+        let selectedEquals = lhs.selectedCards == rhs.selectedCards
+        let cardsEquals = lhs.cards == rhs.cards
+
+        return selectedEquals && cardsEquals
+    }
 }

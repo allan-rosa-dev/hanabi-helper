@@ -8,33 +8,29 @@
 import Foundation
 
 class GameMatch: ObservableObject {
+    
     // MARK: - Attributes
     var deck: Deck
     var hints: Int // Max. 8
     var strikes: Int // When Strikes reach 0 you lose
-    var numberOfPlayers: Int = 2 // 2-5 Players -> 2-3P: 5 cards each | 4-5P: 4 cards each
-    let gameMode: GameMode
+    @Published var config: GameConfiguration
 
+    @Published var playerHand: PlayerHand
     @Published var lastCard: GameCard?
 
     // MARK: - Init
-    init(numberOfPlayers: Int, gameMode: GameMode) {
-        self.deck = Deck(for: gameMode)
+    init(config: GameConfiguration = GameConfiguration(numberOfPlayers: 2)) {
+        self.config = config
+        self.deck = Deck(for: config.gameMode)
         self.hints = 8
         self.strikes = 3
-        self.numberOfPlayers = numberOfPlayers
-        self.gameMode = gameMode
-
+        self.playerHand = PlayerHand(for: config)
         deck.shuffle()
     }
 
     // MARK: - Methods
     func printDeck() {
         deck.displayDeck()
-    }
-
-    func playCard() {
-        lastCard = deck.draw()
     }
 
     // MARK: - Helper Functions

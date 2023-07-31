@@ -10,12 +10,12 @@ import Foundation
 enum CardNumber: CaseIterable, Equatable {
 
     case one, two, three, four, five
-    case invalid(text: String)
+    case invalid
 
     static var allCases: [CardNumber] = [.one, .two, .three, .four, .five]
 
     // MARK: - Methods
-    func description() -> String {
+    var description: String {
         switch self {
         case .one:
             return "1"
@@ -27,8 +27,8 @@ enum CardNumber: CaseIterable, Equatable {
             return "4"
         case .five:
             return "5"
-        case .invalid(text: let text):
-            return text
+        case .invalid:
+            return "?"
         }
     }
 }

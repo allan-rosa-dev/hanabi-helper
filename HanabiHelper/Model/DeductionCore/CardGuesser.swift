@@ -7,8 +7,8 @@
 
 import Foundation
 
+class CardGuesser: ObservableObject {
 
-class CardGuesser {
     // MARK: - Attributes
     let gameMode: GameMode
     private var colorKnowledge: [CardColor]
@@ -33,14 +33,14 @@ class CardGuesser {
         return possibleCards
     }
 
-    func giveHint(_ hint: Hint) {
-        print("\(hint.description())")
+    func applyHint(_ hint: Hint) {
+        print("\(hint.description)")
         switch hint {
-        case .color(isNegated: let isNegated, color: let color):
-            if isNegated { assertFalse(for: color) }
+        case .color(isNormal: let isNormal, color: let color):
+            if isNormal { assertFalse(for: color) }
             else { assertTrue(for: color) }
-        case .number(isNegated: let isNegated, number: let number):
-            if isNegated { assertFalse(for: number) }
+        case .number(isNormal: let isNormal, number: let number):
+            if isNormal { assertFalse(for: number) }
             else { assertTrue(for: number) }
         }
     }
@@ -69,5 +69,12 @@ class CardGuesser {
         default:
             colorKnowledge = colorKnowledge.filter { $0 != color }
         }
+    }
+}
+
+// MARK: - Equatable
+extension CardGuesser: Equatable {
+    static func == (lhs: CardGuesser, rhs: CardGuesser) -> Bool {
+        return lhs.colorKnowledge == rhs.colorKnowledge && lhs.numberKnowledge == rhs.numberKnowledge
     }
 }

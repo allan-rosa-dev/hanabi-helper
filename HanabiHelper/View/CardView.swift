@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CardView: View {
+    
     // MARK: - Attributes
     @ObservedObject var card: GameCard
     @State private var isFacingFront: Bool
@@ -21,7 +22,7 @@ struct CardView: View {
         if let card {
             self.card = card
         } else {
-            self.card = GameCard(color: .multicolor, number: .invalid(text: "?"))
+            self.card = GameCard(color: .multicolor, number: .invalid)
         }
     }
 
@@ -35,7 +36,7 @@ struct CardView: View {
                 .opacity(0.0)
             CardBackView()
                 .opacity(isFacingFront ? 0.0 : 1.0)
-            CardFrontView(text: card.number.description(), color: card.color.color())
+            CardFrontView(text: card.number.description, color: card.color.value)
                 .opacity(isFacingFront ? 1.0 : 0.0)
         }
         .modifier(FlipEffect(isFacingFront: $isFacingFront, angle: animate3d ? 180 : 0, axis: (x: 0, y: 1)))
@@ -86,6 +87,6 @@ extension View {
 // MARK: - Previews
 struct CardView_Previews: PreviewProvider {
     static var previews: some View {
-        CardView(card: GameCard(color: .multicolor, number: .invalid(text: "?")))
+        CardView(card: GameCard(color: .multicolor, number: .invalid))
     }
 }

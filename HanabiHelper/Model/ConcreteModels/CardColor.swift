@@ -13,7 +13,7 @@ enum CardColor: CaseIterable, Equatable {
     case multicolor // Only used in extra modes
 
     // MARK: - Methods
-    func color() -> Color {
+    var value: Color {
         switch self {
         case .blue:
             return .blue
@@ -30,8 +30,7 @@ enum CardColor: CaseIterable, Equatable {
         }
     }
 
-    // MARK: - Methods
-    func description() -> String {
+    var description: String {
         switch self {
         case .blue:
             return "Blue"

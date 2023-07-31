@@ -14,7 +14,7 @@ enum Possibility {
     case unknown
 
     // MARK: - Methods
-    func description() -> String {
+    var description: String {
         switch self {
         case .correct:
             return "☑️"

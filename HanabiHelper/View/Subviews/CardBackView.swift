@@ -7,10 +7,13 @@
 
 import SwiftUI
 
+/// Responsibilities:
+/// Display the possibilities of what is this card
+/// Ex: Suppose the card is a White 3 and you have the hint (IS 3) - the view should display x on everything but the 3 column
 struct CardBackView: View {
 
     // MARK: - Attributes
-    let cardGuesser: CardGuesser
+    @ObservedObject var cardGuesser: CardGuesser
 
     private var colorCount: Int {
         var count: Int
@@ -49,13 +52,13 @@ struct CardBackView: View {
                     // Number Labels
                     GridRow {
                         ForEach(0 ..< CardNumber.allCases.count, id: \.self) { numberValue in
-                            Text(CardNumber.allCases[numberValue].description())
+                            Text(CardNumber.allCases[numberValue].description)
                                 .font(.largeTitle)
                         }
                         .onTapGesture {
                             print("Current: ")
                             cardGuesser.calculatePossbilities().forEach { card in
-                                print(card.description())
+                                print(card.description)
                             }
                             print("---")
                         }
@@ -64,12 +67,12 @@ struct CardBackView: View {
                     ForEach(0 ..< colorCount, id: \.self) { colorIndex in
                         GridRow {
                             ForEach(0 ..< CardNumber.allCases.count, id: \.self) { numberIndex in
-                                CardPossibilityView(.incorrect, color: CardColor.allCases[colorIndex].color())
+                                CardPossibilityView(.incorrect, color: CardColor.allCases[colorIndex].value)
                                     .onTapGesture(count: 3) {
-                                        cardGuesser.giveHint(Hint.number(isNegated: true, number: CardNumber.allCases[numberIndex]))
+                                        cardGuesser.applyHint(Hint.number(isNormal: true, number: CardNumber.allCases[numberIndex]))
                                     }
                                     .onLongPressGesture {
-                                        cardGuesser.giveHint(Hint.color(isNegated: false, color: CardColor.allCases[colorIndex]))
+                                        cardGuesser.applyHint(Hint.color(isNormal: false, color: CardColor.allCases[colorIndex]))
                                     }
                             }
                         }

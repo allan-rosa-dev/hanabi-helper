@@ -7,33 +7,46 @@
 
 import Foundation
 
-struct Deck {
+class Deck: ObservableObject {
     var cards: [GameCard]
     var discardPile: [GameCard]
 
+    // MARK: - Init
     init(for gameMode: GameMode) {
         cards = generateDeck(for: gameMode)
         discardPile = []
     }
 
+    // MARK: - Methods
     func displayDeck() {
         cards.forEach { card in
             print(card.color, card.number, separator: ", ")
         }
     }
 
-    mutating func shuffle() {
+    func shuffle() {
         cards.shuffle()
     }
 
-    mutating func draw() -> GameCard? {
+    func draw() -> GameCard? {
         guard !cards.isEmpty, let topCard = cards.first else { return nil }
         cards.remove(at: 0)
         print("Your draw: [\(topCard.color), \(topCard.number)]")
         return topCard
     }
+
+    func dealCards(numberOfPlayers: Int) -> [GameCard] {
+        var dealtCards = [GameCard]()
+        let handSize = K.standard.getPlayerHandSize(for: numberOfPlayers)
+
+        guard let topCard = draw() else { return dealtCards }
+        dealtCards.append(topCard)
+
+        return dealtCards
+    }
 }
 
+// MARK: - Helper Functions
 fileprivate func generateDeck(for gameMode: GameMode) -> [GameCard] {
     var deck = [GameCard]()
 
@@ -58,7 +71,7 @@ fileprivate func generateDeck(for gameMode: GameMode) -> [GameCard] {
         }
     }
 
-    return deck
+    return deck.shuffled()
 }
 
 fileprivate func generateCards(of color: CardColor) -> [GameCard] {
