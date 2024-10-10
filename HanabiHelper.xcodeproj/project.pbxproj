@@ -27,7 +27,6 @@
 		9C9266D22A73EC870013BBB9 /* Hint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9266D12A73EC870013BBB9 /* Hint.swift */; };
 		9C9266D52A7416F00013BBB9 /* PlayerHand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9266D42A7416F00013BBB9 /* PlayerHand.swift */; };
 		9C9266D72A7417C00013BBB9 /* Possibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9266D62A7417C00013BBB9 /* Possibility.swift */; };
-		9C9266DA2A7437480013BBB9 /* HintView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9266D92A7437480013BBB9 /* HintView.swift */; };
 		9C9266DD2A744F660013BBB9 /* RoundedBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9266DC2A744F660013BBB9 /* RoundedBackground.swift */; };
 		9C9266DF2A7465360013BBB9 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9266DE2A7465360013BBB9 /* Player.swift */; };
 		9C9266E12A74BA200013BBB9 /* Checkbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C9266E02A74BA200013BBB9 /* Checkbox.swift */; };
@@ -58,7 +57,6 @@
 		9C9266D12A73EC870013BBB9 /* Hint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hint.swift; sourceTree = "<group>"; };
 		9C9266D42A7416F00013BBB9 /* PlayerHand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHand.swift; sourceTree = "<group>"; };
 		9C9266D62A7417C00013BBB9 /* Possibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Possibility.swift; sourceTree = "<group>"; };
-		9C9266D92A7437480013BBB9 /* HintView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintView.swift; sourceTree = "<group>"; };
 		9C9266DC2A744F660013BBB9 /* RoundedBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedBackground.swift; sourceTree = "<group>"; };
 		9C9266DE2A7465360013BBB9 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		9C9266E02A74BA200013BBB9 /* Checkbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Checkbox.swift; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				9C9266DB2A744F4F0013BBB9 /* ViewModifier */,
 				9C0120CC2A658B0A007CD87C /* GameView.swift */,
 				9C9266C92A69A3FF0013BBB9 /* CardView.swift */,
-				9C9266D92A7437480013BBB9 /* HintView.swift */,
 				9C9266E32A74BAA40013BBB9 /* Subviews */,
 			);
 			path = View;
@@ -278,7 +275,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9C9266DA2A7437480013BBB9 /* HintView.swift in Sources */,
 				9C9266E52A74BBCC0013BBB9 /* CardSelectorView.swift in Sources */,
 				9C0120E52A6598A7007CD87C /* Deck.swift in Sources */,
 				9C9266D72A7417C00013BBB9 /* Possibility.swift in Sources */,
