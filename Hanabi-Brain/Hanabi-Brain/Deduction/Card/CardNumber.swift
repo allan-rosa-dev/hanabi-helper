@@ -12,7 +12,7 @@ enum CardNumber: CaseIterable, Equatable {
 	case one, two, three, four, five
 }
 
-extension CardNumber {
+extension CardNumber: CustomStringConvertible {
 	var description: String {
 		switch self {
 		case .one:

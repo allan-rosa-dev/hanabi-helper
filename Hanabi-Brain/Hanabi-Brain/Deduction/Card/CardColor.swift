@@ -27,21 +27,23 @@ extension CardColor {
 				return .yellow
 		}
 	}
-	
-	var description: String {
-		switch self {
-			case .white:
-				return "⬜️"
-			case .red:
-				return "🟥"
-			case .green:
-				return "🟩"
-			case .blue:
-				return "🟦"
-			case .yellow:
-				return "🟨"
-		}
-	}
+}
+
+extension CardColor: CustomStringConvertible {
+    var description: String {
+        switch self {
+            case .white:
+                return "⬜️"
+            case .red:
+                return "🟥"
+            case .green:
+                return "🟩"
+            case .blue:
+                return "🟦"
+            case .yellow:
+                return "🟨"
+        }
+    }
 }
 
 extension CardColor: Identifiable {

@@ -5,12 +5,13 @@
 //  Created by Allan Rosa on 28/12/24.
 //
 
-import Foundation
+import SwiftUI
 
-class CardGuess {
-	
-	var possibleNumbers = CardNumber.allCases
-	var possibleColors = CardColor.allCases
+class CardGuess: ObservableObject { 
+    @Published var isSelected: Bool = false
+
+	@Published var possibleNumbers = CardNumber.allCases
+	@Published var possibleColors = CardColor.allCases
 	
 	var possibilities: [Card] {
 		var possibleCards = [Card]()
@@ -25,13 +26,13 @@ class CardGuess {
 	
 	func applyHint(_ hint: Hint) {
 		print("Applying Hint: \(hint.description)")
-		switch hint {
-			case .colorHint(have: let have, color: let color):
-				assert(have: have.value, color: color)
-			case .numberHint(have: let have, number: let number):
-				assert(have: have.value, number: number)
-		}
-	}
+        switch hint.category {
+        case .color:
+            assert(have: hint.logic.value, color: hint.colorValue)
+        case .number:
+            assert(have: hint.logic.value, number: hint.numberValue)
+        }
+    }
 }
 
 extension CardGuess {
@@ -50,4 +51,21 @@ extension CardGuess {
 			possibleColors = possibleColors.filter { $0 != color }
 		}
 	}
+}
+
+extension CardGuess: Identifiable {
+    
+}
+
+// DebugPrint
+extension CardGuess {
+    var description: String {
+        var description = ""
+        possibleColors.forEach { color in
+            possibleNumbers.forEach { number in
+                description += "\(number.description)\(color.description), "
+            }
+        }
+        return description
+    }
 }
