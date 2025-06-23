@@ -19,20 +19,35 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            HStack() {
-                ForEach(cardGuesses) { cardGuess in
-                    CardGuessView(cardGuess: cardGuess)
+            ScrollView(.horizontal, showsIndicators: true) {
+                HStack() {
+                    ForEach(cardGuesses) { cardGuess in
+                        CardGuessView(cardGuess: cardGuess)
+                            .containerRelativeFrame([.horizontal])
+                    }
                 }
+                .scrollTargetLayout()
             }
+            .scrollTargetBehavior(.viewAligned)
+            .contentMargins(25, for: .scrollContent)
+            
             HintPickerView(hint: $hint)
-            Button("Give Hint") {
+            
+            Button("Give Hint 💡") {
                 cardGuesses.filter { $0.isSelected }.forEach { cardGuess in
                     cardGuess.applyHint(hint)
                 }
-                for (index, cardGuess) in cardGuesses.enumerated() {
-                    print("CardGuess #\(index): [\(cardGuess.description)]")
-                }
+//                for (index, cardGuess) in cardGuesses.enumerated() {
+//                    print("CardGuess #\(index): [\(cardGuess.description)]")
+//                }
             }
+            .font(.system(size: 30))
+            .bold()
+            .padding(.horizontal, 20)
+            .padding(.vertical, 10)
+            .foregroundStyle(.white)
+            .background(in: .capsule)
+            .backgroundStyle(.indigo)
         }
         .padding()
     }

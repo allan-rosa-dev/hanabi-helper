@@ -10,31 +10,24 @@ import SwiftUI
 struct HintPickerView: View {
     @Binding var hint: Hint
     
+    @ScaledMetric var pickerSpacing = 5
+    
     var body: some View {
         VStack {
-            Divider()
-            
-            Text("Giving \(hint.category) hint: \(hint.description) ")
-            
-            Divider()
-            
-            Picker("HintTypePicker", selection: $hint.category) {
-                ForEach(Hint.Category.allCases) { category in
-                    Text(category.description.capitalized)
-                }
-            }
-            .pickerStyle(.palette)
-            .padding()
-            
-            HStack() {
+            HStack(spacing: pickerSpacing) {
                 Picker("LogicPicker", selection: $hint.logic) {
                     ForEach(Hint.Logic.allCases) { logic in
                         Text(logic.description.capitalized)
                     }
                 }
-                .pickerStyle(.menu)
-                .tint(.black)
-                .padding()
+                .modifier(PickerSubViewModifier())
+                                
+                Picker("HintTypePicker", selection: $hint.category) {
+                    ForEach(Hint.Category.allCases) { category in
+                        Text(category.description.capitalized)
+                    }
+                }
+                .modifier(PickerSubViewModifier())
                 
                 switch hint.category {
                 case .color:
@@ -43,8 +36,7 @@ struct HintPickerView: View {
                             Text(color.description.capitalized)
                         }
                     }
-                    .pickerStyle(.menu)
-                    .tint(.black)
+                    .modifier(PickerSubViewModifier())
                     
                 case .number:
                     Picker("NumberPicker", selection: $hint.numberValue) {
@@ -52,11 +44,21 @@ struct HintPickerView: View {
                             Text(number.description.capitalized)
                         }
                     }
-                    .pickerStyle(.menu)
-                    .tint(.black)
+                    .modifier(PickerSubViewModifier())
                 }
             }
-            
+        }
+    }
+}
+
+extension HintPickerView {
+    private struct PickerSubViewModifier: ViewModifier {
+        func body(content: Content) -> some View {
+            content
+                .frame(maxWidth: .infinity)
+                .pickerStyle(.menu)
+                .tint(.black)
+                .border(.red)
         }
     }
 }
