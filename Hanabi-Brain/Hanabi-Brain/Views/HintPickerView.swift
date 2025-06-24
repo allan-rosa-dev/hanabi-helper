@@ -15,12 +15,12 @@ struct HintPickerView: View {
     var body: some View {
         VStack {
             HStack(spacing: pickerSpacing) {
-                Picker("LogicPicker", selection: $hint.logic) {
-                    ForEach(Hint.Logic.allCases) { logic in
-                        Text(logic.description.capitalized)
-                    }
-                }
-                .modifier(PickerSubViewModifier())
+//                Picker("LogicPicker", selection: $hint.logic) {
+//                    ForEach(Hint.Logic.allCases) { logic in
+//                        Text(logic.description.capitalized)
+//                    }
+//                }
+//                .modifier(PickerSubViewModifier())
                                 
                 Picker("HintTypePicker", selection: $hint.category) {
                     ForEach(Hint.Category.allCases) { category in

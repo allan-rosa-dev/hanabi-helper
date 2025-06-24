@@ -33,6 +33,10 @@ class CardGuess: ObservableObject {
             assert(have: hint.logic.value, number: hint.numberValue)
         }
     }
+    
+    func reverseHint(_ hint: Hint) {
+        // TODO: Implement
+    }
 }
 
 extension CardGuess {

@@ -28,6 +28,11 @@ struct CardGuessView: View {
                                         Text("\(number.description)")
                                             .font(.system(size: 50))
                                     }
+                                    .onTapGesture {
+                                        cardGuess.possibleColors = cardGuess.possibleColors.filter { $0 == color }
+                                        cardGuess.possibleColors = cardGuess.possibleColors.filter { $0 == color }
+                                        
+                                    }
                                 } else {
                                     RoundedRectangle(cornerRadius: 10)
                                         .foregroundStyle(.brown)

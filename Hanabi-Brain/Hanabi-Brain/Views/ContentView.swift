@@ -16,7 +16,10 @@ struct ContentView: View {
         CardGuess(),
 //        CardGuess(),
     ]
+    
     @State var hint: Hint = Hint(category: .color, logic: .have, colorValue: .white, numberValue: .one)
+    
+    @State var playButtonIsActive = true
     
     var body: some View {
         VStack {
@@ -41,23 +44,55 @@ struct ContentView: View {
             
             HintPickerView(hint: $hint)
             
-            Button("Give Hint 💡") {
-                cardGuesses.filter { $0.isSelected }.forEach { cardGuess in
-                    cardGuess.applyHint(hint)
+            HStack {
+                Button("Give Hint 💡") {
+                    selectedCardGuesses.forEach { cardGuess in
+                        cardGuess.applyHint(hint)
+                    }
+                    unselectedCardGuesses.forEach { cardGuess in
+                        cardGuess.applyHint(hint.opposite)
+                    }
                 }
-//                for (index, cardGuess) in cardGuesses.enumerated() {
-//                    print("CardGuess #\(index): [\(cardGuess.description)]")
-//                }
+                .modifier(ButtonModifier(color: .indigo))
+                
+                Button("Play/Discard 🎆") {
+                    guard selectedCardGuesses.count == 1 else {
+                        playButtonIsActive = false
+                        return
+                    }
+                    playButtonIsActive = true
+                    cardGuesses = unselectedCardGuesses
+                    cardGuesses.append(CardGuess())
+                }
+                .modifier(ButtonModifier(color: playButtonIsActive ? .indigo : .orange))
             }
-            .font(.system(size: 30))
-            .bold()
-            .padding(.horizontal, 20)
-            .padding(.vertical, 10)
-            .foregroundStyle(.white)
-            .background(in: .capsule)
-            .backgroundStyle(.indigo)
         }
         .padding(5)
+    }
+}
+
+extension ContentView {
+    var selectedCardGuesses: [CardGuess] {
+        cardGuesses.filter { $0.isSelected }
+    }
+    
+    var unselectedCardGuesses: [CardGuess] {
+        cardGuesses.filter { !$0.isSelected }
+    }
+    
+    private struct ButtonModifier: ViewModifier {
+        var color: Color
+        
+        func body(content: Content) -> some View {
+            content
+                .font(.system(size: 23))
+                .bold()
+                .padding(.horizontal, 15)
+                .padding(.vertical, 5)
+                .foregroundStyle(.white)
+                .background(in: .capsule)
+                .backgroundStyle(color)
+        }
     }
 }
 

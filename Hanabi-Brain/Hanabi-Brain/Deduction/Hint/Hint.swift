@@ -12,6 +12,13 @@ struct Hint {
     var logic: Logic = .have
     var colorValue: CardColor = .white
     var numberValue: CardNumber = .one
+    
+    var opposite: Hint {
+        switch logic {
+        case .have: return Hint(category: category, logic: .dontHave, colorValue: colorValue, numberValue: numberValue)
+        case .dontHave: return Hint(category: category, logic: .have, colorValue: colorValue, numberValue: numberValue)
+        }
+    }
 }
 
 extension Hint {
