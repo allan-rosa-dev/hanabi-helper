@@ -14,6 +14,7 @@ struct ContentView: View {
         CardGuess(),
         CardGuess(),
         CardGuess(),
+//        CardGuess(),
     ]
     @State var hint: Hint = Hint(category: .color, logic: .have, colorValue: .white, numberValue: .one)
     
@@ -30,6 +31,13 @@ struct ContentView: View {
             }
             .scrollTargetBehavior(.viewAligned)
             .contentMargins(25, for: .scrollContent)
+            
+            HStack() {
+                ForEach(cardGuesses) { cardGuess in
+                    CardSelectView(cardGuess: cardGuess)
+                }
+            }
+            .padding(10)
             
             HintPickerView(hint: $hint)
             
@@ -49,7 +57,7 @@ struct ContentView: View {
             .background(in: .capsule)
             .backgroundStyle(.indigo)
         }
-        .padding()
+        .padding(5)
     }
 }
 

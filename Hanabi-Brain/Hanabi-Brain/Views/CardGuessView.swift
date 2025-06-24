@@ -40,9 +40,9 @@ struct CardGuessView: View {
                 }
             }
         }
-        .onTapGesture {
-            cardGuess.isSelected.toggle()
-        }
+//        .onTapGesture {
+//            cardGuess.isSelected.toggle()
+//        }
     }
 }
 
