@@ -21,21 +21,14 @@ struct CardGuessView: View {
                         GridRow() {
                             ForEach(CardNumber.allCases) { number in
                                 if cardGuess.possibleColors.contains(color) && cardGuess.possibleNumbers.contains(number) {
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .foregroundStyle(color.value)
-                                            .frame(width: 50, height: 80, alignment: .center)
-                                        Text("\(number.description)")
-                                            .font(.system(size: 50))
-                                    }
-                                    .onTapGesture {
-                                        cardGuess.possibleColors = cardGuess.possibleColors.filter { $0 == color }
-                                        cardGuess.possibleColors = cardGuess.possibleColors.filter { $0 == color }
-                                        
-                                    }
+                                    CardView(card: Card(color: color, number: number))
+                                        .frame(width: 50, height: 80)
+//                                    .onTapGesture {
+//                                        cardGuess.possibleColors = cardGuess.possibleColors.filter { $0 == color }
+//                                        cardGuess.possibleColors = cardGuess.possibleColors.filter { $0 == color }
+//                                    }
                                 } else {
-                                    RoundedRectangle(cornerRadius: 10)
-                                        .foregroundStyle(.brown)
+                                    CardView(card: nil, emptyText: "")
                                         .frame(width: 50, height: 80, alignment: .center)
                                         .gridCellUnsizedAxes([.horizontal, .vertical])
                                 }

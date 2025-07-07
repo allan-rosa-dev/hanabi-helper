@@ -14,7 +14,7 @@ struct ContentView: View {
         CardGuess(),
         CardGuess(),
         CardGuess(),
-//        CardGuess(),
+        //        CardGuess(),
     ]
     
     @State var hint: Hint = Hint(category: .color, logic: .have, colorValue: .white, numberValue: .one)
@@ -22,49 +22,57 @@ struct ContentView: View {
     @State var playButtonIsActive = true
     
     var body: some View {
-        VStack {
-            ScrollView(.horizontal, showsIndicators: true) {
+        NavigationStack {
+            VStack {
+                NavigationLink {
+                    PlayedCardsView()
+                } label: {
+                    Text("Played Cards 🔎")
+                }
+                
+                ScrollView(.horizontal, showsIndicators: true) {
+                    HStack() {
+                        ForEach(cardGuesses) { cardGuess in
+                            CardGuessView(cardGuess: cardGuess)
+                                .containerRelativeFrame([.horizontal])
+                        }
+                    }
+                    .scrollTargetLayout()
+                }
+                .scrollTargetBehavior(.viewAligned)
+                .contentMargins(25, for: .scrollContent)
+                
                 HStack() {
                     ForEach(cardGuesses) { cardGuess in
-                        CardGuessView(cardGuess: cardGuess)
-                            .containerRelativeFrame([.horizontal])
+                        CardSelectView(cardGuess: cardGuess)
                     }
                 }
-                .scrollTargetLayout()
-            }
-            .scrollTargetBehavior(.viewAligned)
-            .contentMargins(25, for: .scrollContent)
-            
-            HStack() {
-                ForEach(cardGuesses) { cardGuess in
-                    CardSelectView(cardGuess: cardGuess)
-                }
-            }
-            .padding(10)
-            
-            HintPickerView(hint: $hint)
-            
-            HStack {
-                Button("Give Hint 💡") {
-                    selectedCardGuesses.forEach { cardGuess in
-                        cardGuess.applyHint(hint)
-                    }
-                    unselectedCardGuesses.forEach { cardGuess in
-                        cardGuess.applyHint(hint.opposite)
-                    }
-                }
-                .modifier(ButtonModifier(color: .indigo))
+                .padding(10)
                 
-                Button("Play/Discard 🎆") {
-                    guard selectedCardGuesses.count == 1 else {
-                        playButtonIsActive = false
-                        return
+                HintPickerView(hint: $hint)
+                
+                HStack {
+                    Button("Give Hint 💡") {
+                        selectedCardGuesses.forEach { cardGuess in
+                            cardGuess.applyHint(hint)
+                        }
+                        unselectedCardGuesses.forEach { cardGuess in
+                            cardGuess.applyHint(hint.opposite)
+                        }
                     }
-                    playButtonIsActive = true
-                    cardGuesses = unselectedCardGuesses
-                    cardGuesses.append(CardGuess())
+                    .modifier(ButtonModifier(color: .indigo))
+                    
+                    Button("Play/Discard 🎆") {
+                        guard selectedCardGuesses.count == 1 else {
+                            playButtonIsActive = false
+                            return
+                        }
+                        playButtonIsActive = true
+                        cardGuesses = unselectedCardGuesses
+                        cardGuesses.append(CardGuess())
+                    }
+                    .modifier(ButtonModifier(color: playButtonIsActive ? .indigo : .orange))
                 }
-                .modifier(ButtonModifier(color: playButtonIsActive ? .indigo : .orange))
             }
         }
         .padding(5)
