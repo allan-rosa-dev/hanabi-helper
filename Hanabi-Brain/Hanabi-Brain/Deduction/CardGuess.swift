@@ -8,8 +8,8 @@
 import SwiftUI
 
 class CardGuess: ObservableObject { 
-    @Published var isSelected: Bool = false
-    @Published var isOnMainDisplay = false
+    @Published var isSelected: Bool
+    @Published var isOnMainDisplay: Bool
 
 	@Published var possibleNumbers = CardNumber.allCases
 	@Published var possibleColors = CardColor.allCases
@@ -24,6 +24,11 @@ class CardGuess: ObservableObject {
 		}
 		return possibleCards
 	}
+    
+    init(isSelected: Bool = false, isOnMainDisplay: Bool = false) {
+        self.isSelected = isSelected
+        self.isOnMainDisplay = isOnMainDisplay
+    }
 	
 	func applyHint(_ hint: Hint) {
 		print("Applying Hint: \(hint.description)")

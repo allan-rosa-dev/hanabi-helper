@@ -15,6 +15,5 @@ extension View {
         else {
             self
         }
-        
     }
 }

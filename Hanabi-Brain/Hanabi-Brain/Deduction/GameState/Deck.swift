@@ -83,8 +83,6 @@ fileprivate func generateCards(of color: CardColor) -> [Card] {
             cards.append(contentsOf: [Card](repeating: Card(color: color, number: number), count: 2))
         case .five:
             cards.append(contentsOf: [Card](repeating: Card(color: color, number: number), count: 1))
-        default:
-            break
         }
     }
 

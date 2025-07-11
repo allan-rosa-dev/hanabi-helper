@@ -20,6 +20,14 @@ struct ContentView: View {
     @State var hint: Hint = Hint(category: .color, logic: .have, colorValue: .white, numberValue: .one)
     
     @State var playButtonIsActive = true
+    @State var currentCardIndex: Int? = 0 {
+        didSet {
+            cardGuesses.forEach { $0.isOnMainDisplay = false }
+            if let currentCardIndex {
+                cardGuesses[currentCardIndex].isOnMainDisplay = true
+            }
+        }
+    }
     
     var body: some View {
         NavigationStack {
@@ -29,10 +37,11 @@ struct ContentView: View {
                 } label: {
                     Text("Played Cards 🔎")
                 }
-                ScrollViewReader { value in
+                
+                ScrollViewReader { proxy in
                     ScrollView(.horizontal, showsIndicators: true) {
                         HStack() {
-                            ForEach(cardGuesses.indices) { index in
+                            ForEach(cardGuesses.indices, id: \.self) { index in
                                 CardGuessView(cardGuess: cardGuesses[index])
                                     .containerRelativeFrame([.horizontal])
                                     .id(index)
@@ -40,20 +49,24 @@ struct ContentView: View {
                         }
                         .scrollTargetLayout()
                     }
+                    .scrollPosition(id: $currentCardIndex)
                     .scrollTargetBehavior(.viewAligned)
                     .contentMargins(25, for: .scrollContent)
-                    
+                    .onChange(of: currentCardIndex ?? 0) { oldValue, newValue in
+                        withAnimation {
+                            setCurrentCard(at: newValue, proxy: proxy)
+                        }
+                    }
                     
                     // MinimapView
                     HStack() {
-                        ForEach(cardGuesses.indices) { index in
+                        ForEach(cardGuesses.indices, id: \.self) { index in
                             CardSelectView(cardGuess: cardGuesses[index])
-                                .border(.red)
                                 .simultaneousGesture(
                                     LongPressGesture()
                                         .onEnded { _ in
                                             withAnimation {
-                                                value.scrollTo(index)
+                                                setCurrentCard(at: index, proxy: proxy)
                                             }
                                         }
                                 )
@@ -114,6 +127,11 @@ extension ContentView {
                 .background(in: .capsule)
                 .backgroundStyle(color)
         }
+    }
+    
+    private func setCurrentCard(at index: Int, proxy: ScrollViewProxy) {
+        currentCardIndex = index
+        proxy.scrollTo(index)
     }
 }
 

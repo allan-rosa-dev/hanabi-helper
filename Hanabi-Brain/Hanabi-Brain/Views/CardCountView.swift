@@ -48,7 +48,7 @@ struct CircleStackView: View {
     var body: some View {
         Grid(horizontalSpacing: 10) {
             GridRow() {
-                ForEach(0..<maxCircles) { i in
+                ForEach(0..<maxCircles, id: \.self) { i in
                     if i < filledCircles {
                         Circle()
                             .stroke(color, lineWidth: 5)
