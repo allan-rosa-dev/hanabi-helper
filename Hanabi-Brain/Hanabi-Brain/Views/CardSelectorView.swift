@@ -18,6 +18,12 @@ struct CardSelectView: View {
             .onTapGesture {
                 cardGuess.isSelected.toggle()
             }
+            .if(cardGuess.isOnMainDisplay) { view in
+                view.overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.cyan, lineWidth: 2)
+                }
+            }
     }
 }
 

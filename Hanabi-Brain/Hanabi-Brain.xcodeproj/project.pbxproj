@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9C0141702E0977310092A7F2 /* CardGuessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9C01416F2E0977310092A7F2 /* CardGuessView.swift */; };
 		9CA57DD62E05F341003CAC37 /* HintPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA57DD52E05F341003CAC37 /* HintPickerView.swift */; };
+		9CA705EB2E1D99BC0081939B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA705EA2E1D99BC0081939B /* View+Extensions.swift */; };
 		9CB7999E2E0A147A00B5375B /* CardSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7999D2E0A147A00B5375B /* CardSelectorView.swift */; };
 		9CB799A02E0AD76300B5375B /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7999F2E0AD76300B5375B /* GameBoard.swift */; };
 		9CB799A22E0AD8A300B5375B /* PlayedPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A12E0AD8A300B5375B /* PlayedPile.swift */; };
@@ -31,6 +32,7 @@
 /* Begin PBXFileReference section */
 		9C01416F2E0977310092A7F2 /* CardGuessView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardGuessView.swift; sourceTree = "<group>"; };
 		9CA57DD52E05F341003CAC37 /* HintPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintPickerView.swift; sourceTree = "<group>"; };
+		9CA705EA2E1D99BC0081939B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		9CB7999D2E0A147A00B5375B /* CardSelectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectorView.swift; sourceTree = "<group>"; };
 		9CB7999F2E0AD76300B5375B /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		9CB799A12E0AD8A300B5375B /* PlayedPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedPile.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 				AC7222062D2097DC0029970C /* Assets.xcassets */,
 				AC7222082D2097DC0029970C /* Preview Content */,
 				AC7222022D2097DA0029970C /* Hanabi_BrainApp.swift */,
+				9CA705EA2E1D99BC0081939B /* View+Extensions.swift */,
 				9CA57DD72E05F6E2003CAC37 /* Views */,
 				9CA57DD82E05F700003CAC37 /* Deduction */,
 			);
@@ -224,6 +227,7 @@
 				AC72221B2D209DE50029970C /* CardGuess.swift in Sources */,
 				AC7222112D20995D0029970C /* Deck.swift in Sources */,
 				9CB799AA2E0B33EC00B5375B /* CardCountView.swift in Sources */,
+				9CA705EB2E1D99BC0081939B /* View+Extensions.swift in Sources */,
 				9CB7999E2E0A147A00B5375B /* CardSelectorView.swift in Sources */,
 				AC7222132D20997A0029970C /* Card.swift in Sources */,
 				AC72221D2D209EF80029970C /* Hint.swift in Sources */,

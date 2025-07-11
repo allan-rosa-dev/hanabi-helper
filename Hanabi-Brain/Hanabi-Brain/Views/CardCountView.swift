@@ -17,7 +17,7 @@ struct CardCountView: View {
     @Binding var yellowCount: Int
     
     var body: some View {
-        CardNumberCountView(labelText: number.description, whiteCount: $whiteCount, redCount: $redCount, greenCount: $greenCount, blueCount: $blueCount, yellowCount: $yellowCount)
+        CardNumberCountView(labelText: number.description, whiteCount: $whiteCount, redCount: $redCount, greenCount: $greenCount, blueCount: $blueCount, yellowCount: $yellowCount, maxCircles: 3)
             .padding()
             .background(.gray)
 //        Button("Test"){
@@ -48,9 +48,10 @@ struct CircleStackView: View {
     var body: some View {
         Grid(horizontalSpacing: 10) {
             GridRow() {
-                ForEach(0..<3) { i in
+                ForEach(0..<maxCircles) { i in
                     if i < filledCircles {
                         Circle()
+                            .stroke(color, lineWidth: 5)
                             .fill(color)
                             .frame(width: size, height: size)
                     } else {
@@ -72,20 +73,21 @@ struct CardNumberCountView: View {
     @Binding var greenCount: Int
     @Binding var blueCount: Int
     @Binding var yellowCount: Int
+    let maxCircles: Int
     
     var body: some View {
-        HStack() {
+        VStack() {
             Text(labelText)
                 .font(.largeTitle)
                 .frame(alignment: .trailing)
                 .scaledToFill()
             
             VStack {
-                CircleStackView(filledCircles: $whiteCount, maxCircles: 3, color: .white)
-                CircleStackView(filledCircles: $redCount, maxCircles: 3, color: .red)
-                CircleStackView(filledCircles: $greenCount, maxCircles: 3, color: .green)
-                CircleStackView(filledCircles: $blueCount, maxCircles: 3, color: .blue)
-                CircleStackView(filledCircles: $yellowCount, maxCircles: 3, color: .yellow)
+                CircleStackView(filledCircles: $whiteCount, maxCircles: maxCircles, color: .white)
+                CircleStackView(filledCircles: $redCount, maxCircles: maxCircles, color: .red)
+                CircleStackView(filledCircles: $greenCount, maxCircles: maxCircles, color: .green)
+                CircleStackView(filledCircles: $blueCount, maxCircles: maxCircles, color: .blue)
+                CircleStackView(filledCircles: $yellowCount, maxCircles: maxCircles, color: .yellow)
             }
         }
     }

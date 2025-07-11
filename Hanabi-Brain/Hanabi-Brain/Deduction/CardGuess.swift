@@ -9,6 +9,7 @@ import SwiftUI
 
 class CardGuess: ObservableObject { 
     @Published var isSelected: Bool = false
+    @Published var isOnMainDisplay = false
 
 	@Published var possibleNumbers = CardNumber.allCases
 	@Published var possibleColors = CardColor.allCases

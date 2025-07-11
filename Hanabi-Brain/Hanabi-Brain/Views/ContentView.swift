@@ -29,25 +29,38 @@ struct ContentView: View {
                 } label: {
                     Text("Played Cards 🔎")
                 }
-                
-                ScrollView(.horizontal, showsIndicators: true) {
+                ScrollViewReader { value in
+                    ScrollView(.horizontal, showsIndicators: true) {
+                        HStack() {
+                            ForEach(cardGuesses.indices) { index in
+                                CardGuessView(cardGuess: cardGuesses[index])
+                                    .containerRelativeFrame([.horizontal])
+                                    .id(index)
+                            }
+                        }
+                        .scrollTargetLayout()
+                    }
+                    .scrollTargetBehavior(.viewAligned)
+                    .contentMargins(25, for: .scrollContent)
+                    
+                    
+                    // MinimapView
                     HStack() {
-                        ForEach(cardGuesses) { cardGuess in
-                            CardGuessView(cardGuess: cardGuess)
-                                .containerRelativeFrame([.horizontal])
+                        ForEach(cardGuesses.indices) { index in
+                            CardSelectView(cardGuess: cardGuesses[index])
+                                .border(.red)
+                                .simultaneousGesture(
+                                    LongPressGesture()
+                                        .onEnded { _ in
+                                            withAnimation {
+                                                value.scrollTo(index)
+                                            }
+                                        }
+                                )
                         }
                     }
-                    .scrollTargetLayout()
+                    .padding(10)
                 }
-                .scrollTargetBehavior(.viewAligned)
-                .contentMargins(25, for: .scrollContent)
-                
-                HStack() {
-                    ForEach(cardGuesses) { cardGuess in
-                        CardSelectView(cardGuess: cardGuess)
-                    }
-                }
-                .padding(10)
                 
                 HintPickerView(hint: $hint)
                 
