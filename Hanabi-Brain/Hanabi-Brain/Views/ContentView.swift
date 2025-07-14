@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     let gameConfig = GameConfig(mode: .regular, numberOfPlayers: .two)
     @State var cardGuesses: [CardGuess] = [
-        CardGuess(isOnMainDisplay: true),
+        CardGuess(isFocused: true),
         CardGuess(),
         CardGuess(),
         CardGuess(),
@@ -22,9 +22,9 @@ struct ContentView: View {
     @State var playButtonIsActive = true
     @State var currentCardIndex: Int? = 0 {
         didSet {
-            cardGuesses.forEach { $0.isOnMainDisplay = false }
+            cardGuesses.forEach { $0.isFocused = false }
             if let currentCardIndex {
-                cardGuesses[currentCardIndex].isOnMainDisplay = true
+                cardGuesses[currentCardIndex].isFocused = true
             }
         }
     }

@@ -9,10 +9,10 @@ import SwiftUI
 
 class CardGuess: ObservableObject { 
     @Published var isSelected: Bool
-    @Published var isOnMainDisplay: Bool
+    @Published var isFocused: Bool
 
-	@Published var possibleNumbers = CardNumber.allCases
-	@Published var possibleColors = CardColor.allCases
+    @Published var possibleNumbers: [CardNumber]
+    @Published var possibleColors: [CardColor]
 	
 	var possibilities: [Card] {
 		var possibleCards = [Card]()
@@ -25,9 +25,11 @@ class CardGuess: ObservableObject {
 		return possibleCards
 	}
     
-    init(isSelected: Bool = false, isOnMainDisplay: Bool = false) {
+    init(isSelected: Bool = false, isFocused: Bool = false, possibleNumbers: [CardNumber] = CardNumber.allCases, possibleColors: [CardColor] = CardColor.allCases) {
         self.isSelected = isSelected
-        self.isOnMainDisplay = isOnMainDisplay
+        self.isFocused = isFocused
+        self.possibleNumbers = possibleNumbers
+        self.possibleColors = possibleColors
     }
 	
 	func applyHint(_ hint: Hint) {
@@ -47,7 +49,8 @@ class CardGuess: ObservableObject {
 
 extension CardGuess {
 	private func assert(have: Bool, number: CardNumber) {
-        guard possibleNumbers.count > 1 else { return }
+        // TODO: - Implement Clue giving error / throw & handling
+        guard possibleNumbers.count > 1 && possibleNumbers.contains(number) else { return }
 		if have {
 			possibleNumbers = possibleNumbers.filter { $0 == number }
 		} else {
@@ -56,7 +59,8 @@ extension CardGuess {
 	}
 	
 	private func assert(have: Bool, color: CardColor) {
-        guard possibleColors.count > 1 else { return }
+        // TODO: - Implement Clue giving error / throw & handling
+        guard possibleColors.count > 1 && possibleColors.contains(color) else { return }
 		if have {
 			possibleColors = possibleColors.filter { $0 == color }
 		} else {
@@ -69,7 +73,7 @@ extension CardGuess: Identifiable {
     
 }
 
-// DebugPrint
+// WIP - DebugPrint - marked for deletion
 extension CardGuess {
     var description: String {
         var description = ""

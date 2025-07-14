@@ -16,7 +16,7 @@ struct CardSelectView: View {
         VStack(spacing: 8) {
             Circle()
                 .frame(width: 10, height: 10, alignment: .center)
-                .foregroundStyle(cardGuess.isOnMainDisplay ? .black : .clear)
+                .foregroundStyle(cardGuess.isFocused ? .black : .clear)
             ZStack {
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 50, height: 50)
@@ -63,21 +63,56 @@ struct CardSelectView: View {
 }
 
 #Preview("Default") {
-    @Previewable @State var cardGuess = CardGuess()
-    CardSelectView(cardGuess: cardGuess)
+    @Previewable @State var defaulted = CardGuess()
+    @Previewable @State var onlyNumberDiscovered = CardGuess(possibleNumbers: [.one])
+    @Previewable @State var onlyColorDiscovered = CardGuess(possibleColors: [.white])
+    @Previewable @State var cardDiscovered = CardGuess(possibleNumbers: [.two], possibleColors: [.blue])
+    
+    HStack {
+        CardSelectView(cardGuess: defaulted)
+        CardSelectView(cardGuess: onlyNumberDiscovered)
+        CardSelectView(cardGuess: onlyColorDiscovered)
+        CardSelectView(cardGuess: cardDiscovered)
+    }
 }
 
 #Preview("Selected") {
-    @Previewable @State var cardGuess = CardGuess(isSelected: true)
-    CardSelectView(cardGuess: cardGuess)
+    @Previewable @State var defaulted = CardGuess(isSelected: true)
+    @Previewable @State var onlyNumberDiscovered = CardGuess(isSelected: true, possibleNumbers: [.four])
+    @Previewable @State var onlyColorDiscovered = CardGuess(isSelected: true, possibleColors: [.green])
+    @Previewable @State var cardDiscovered = CardGuess(isSelected: true, possibleNumbers: [.three], possibleColors: [.red])
+    HStack {
+        CardSelectView(cardGuess: defaulted)
+        CardSelectView(cardGuess: onlyNumberDiscovered)
+        CardSelectView(cardGuess: onlyColorDiscovered)
+        CardSelectView(cardGuess: cardDiscovered)
+    }
 }
 
-#Preview("MainDisplay") {
-    @Previewable @State var cardGuess = CardGuess(isOnMainDisplay: true)
-    CardSelectView(cardGuess: cardGuess)
+#Preview("Focused") {
+    @Previewable @State var defaulted = CardGuess(isFocused: true)
+    @Previewable @State var onlyNumberDiscovered = CardGuess(isFocused: true, possibleNumbers: [.one])
+    @Previewable @State var onlyColorDiscovered = CardGuess(isFocused: true, possibleColors: [.yellow])
+    @Previewable @State var cardDiscovered = CardGuess(isFocused: true, possibleNumbers: [.five], possibleColors: [.yellow])
+    
+    HStack {
+        CardSelectView(cardGuess: defaulted)
+        CardSelectView(cardGuess: onlyNumberDiscovered)
+        CardSelectView(cardGuess: onlyColorDiscovered)
+        CardSelectView(cardGuess: cardDiscovered)
+    }
 }
 
-#Preview("Selected OnMainDisplay") {
-    @Previewable @State var cardGuess = CardGuess(isSelected: true, isOnMainDisplay: true)
-    CardSelectView(cardGuess: cardGuess)
+#Preview("Selected & Focused") {
+    @Previewable @State var defaulted = CardGuess(isSelected: true, isFocused: true)
+    @Previewable @State var onlyNumberDiscovered = CardGuess(isSelected: true, isFocused: true, possibleNumbers: [.one])
+    @Previewable @State var onlyColorDiscovered = CardGuess(isSelected: true, isFocused: true, possibleColors: [.blue])
+    @Previewable @State var cardDiscovered = CardGuess(isSelected: true, isFocused: true, possibleNumbers: [.two], possibleColors: [.red])
+    
+    HStack {
+        CardSelectView(cardGuess: defaulted)
+        CardSelectView(cardGuess: onlyNumberDiscovered)
+        CardSelectView(cardGuess: onlyColorDiscovered)
+        CardSelectView(cardGuess: cardDiscovered)
+    }
 }
