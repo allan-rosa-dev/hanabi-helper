@@ -47,6 +47,7 @@ class CardGuess: ObservableObject {
 
 extension CardGuess {
 	private func assert(have: Bool, number: CardNumber) {
+        guard possibleNumbers.count > 1 else { return }
 		if have {
 			possibleNumbers = possibleNumbers.filter { $0 == number }
 		} else {
@@ -55,6 +56,7 @@ extension CardGuess {
 	}
 	
 	private func assert(have: Bool, color: CardColor) {
+        guard possibleColors.count > 1 else { return }
 		if have {
 			possibleColors = possibleColors.filter { $0 == color }
 		} else {

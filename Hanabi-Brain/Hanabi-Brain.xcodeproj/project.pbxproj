@@ -16,6 +16,7 @@
 		9CB799A62E0ADF7400B5375B /* PlayedCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A52E0ADF7400B5375B /* PlayedCardsView.swift */; };
 		9CB799A82E0AECBE00B5375B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A72E0AECBE00B5375B /* CardView.swift */; };
 		9CB799AA2E0B33EC00B5375B /* CardCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A92E0B33EC00B5375B /* CardCountView.swift */; };
+		9CF7BF742E2542780083EC4B /* StrokeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF7BF732E2542780083EC4B /* StrokeModifier.swift */; };
 		AC7222032D2097DA0029970C /* Hanabi_BrainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7222022D2097DA0029970C /* Hanabi_BrainApp.swift */; };
 		AC7222052D2097DA0029970C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7222042D2097DA0029970C /* ContentView.swift */; };
 		AC7222072D2097DC0029970C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC7222062D2097DC0029970C /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		9CB799A52E0ADF7400B5375B /* PlayedCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedCardsView.swift; sourceTree = "<group>"; };
 		9CB799A72E0AECBE00B5375B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		9CB799A92E0B33EC00B5375B /* CardCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountView.swift; sourceTree = "<group>"; };
+		9CF7BF732E2542780083EC4B /* StrokeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeModifier.swift; sourceTree = "<group>"; };
 		AC7221FF2D2097DA0029970C /* Hanabi-Brain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hanabi-Brain.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7222022D2097DA0029970C /* Hanabi_BrainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hanabi_BrainApp.swift; sourceTree = "<group>"; };
 		AC7222042D2097DA0029970C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 		9CA57DD72E05F6E2003CAC37 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9CF7BF722E2538E90083EC4B /* ViewModifiers */,
 				AC7222042D2097DA0029970C /* ContentView.swift */,
 				9C01416F2E0977310092A7F2 /* CardGuessView.swift */,
 				9CB7999D2E0A147A00B5375B /* CardSelectView.swift */,
@@ -100,6 +103,22 @@
 			path = GameState;
 			sourceTree = "<group>";
 		};
+		9CED53662E25364D005C711E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9CA705EA2E1D99BC0081939B /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9CF7BF722E2538E90083EC4B /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				9CF7BF732E2542780083EC4B /* StrokeModifier.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
 		AC7221F62D2097DA0029970C = {
 			isa = PBXGroup;
 			children = (
@@ -122,7 +141,7 @@
 				AC7222062D2097DC0029970C /* Assets.xcassets */,
 				AC7222082D2097DC0029970C /* Preview Content */,
 				AC7222022D2097DA0029970C /* Hanabi_BrainApp.swift */,
-				9CA705EA2E1D99BC0081939B /* View+Extensions.swift */,
+				9CED53662E25364D005C711E /* Extensions */,
 				9CA57DD72E05F6E2003CAC37 /* Views */,
 				9CA57DD82E05F700003CAC37 /* Deduction */,
 			);
@@ -234,6 +253,7 @@
 				AC7222052D2097DA0029970C /* ContentView.swift in Sources */,
 				9CB799A22E0AD8A300B5375B /* PlayedPile.swift in Sources */,
 				9CB799A82E0AECBE00B5375B /* CardView.swift in Sources */,
+				9CF7BF742E2542780083EC4B /* StrokeModifier.swift in Sources */,
 				AC7222032D2097DA0029970C /* Hanabi_BrainApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

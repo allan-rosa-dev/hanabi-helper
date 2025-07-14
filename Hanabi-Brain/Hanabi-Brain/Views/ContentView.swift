@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     let gameConfig = GameConfig(mode: .regular, numberOfPlayers: .two)
     @State var cardGuesses: [CardGuess] = [
-        CardGuess(),
+        CardGuess(isOnMainDisplay: true),
         CardGuess(),
         CardGuess(),
         CardGuess(),
@@ -79,25 +79,14 @@ struct ContentView: View {
                 
                 HStack {
                     Button("Give Hint 💡") {
-                        selectedCardGuesses.forEach { cardGuess in
-                            cardGuess.applyHint(hint)
-                        }
-                        unselectedCardGuesses.forEach { cardGuess in
-                            cardGuess.applyHint(hint.opposite)
-                        }
+                        giveHint()
                     }
                     .modifier(ButtonModifier(color: .indigo))
                     
-                    Button("Play/Discard 🎆") {
-                        guard selectedCardGuesses.count == 1 else {
-                            playButtonIsActive = false
-                            return
-                        }
-                        playButtonIsActive = true
-                        cardGuesses = unselectedCardGuesses
-                        cardGuesses.append(CardGuess())
+                    Button("Discard 🎆") {
+                        discardSelectedCard()
                     }
-                    .modifier(ButtonModifier(color: playButtonIsActive ? .indigo : .orange))
+                    .modifier(ButtonModifier(color: .indigo))
                 }
             }
         }
@@ -132,6 +121,41 @@ extension ContentView {
     private func setCurrentCard(at index: Int, proxy: ScrollViewProxy) {
         currentCardIndex = index
         proxy.scrollTo(index)
+    }
+    
+    private func giveHint() {
+        guard selectedCardGuesses.count > 0 else {
+            // TODO: - Show popup with feedback "no selected cards to give hint"
+            return
+        }
+        
+        selectedCardGuesses.forEach { cardGuess in
+            cardGuess.applyHint(hint)
+        }
+        
+        unselectedCardGuesses.forEach { cardGuess in
+            cardGuess.applyHint(hint.opposite)
+        }
+        
+        deselectAllCards()
+    }
+    
+    private func playSelectedCard() {
+        // TODO: - implement play function
+    }
+    
+    private func discardSelectedCard() {
+        guard selectedCardGuesses.count > 0 else {
+            // TODO: - Show popup with feedback "select at least 1 card to discard"
+            return
+        }
+        // TODO: - inform deck manager what was discarded for deduction logic
+        cardGuesses = unselectedCardGuesses
+        cardGuesses.append(CardGuess())
+    }
+    
+    private func deselectAllCards() {
+        cardGuesses.forEach { $0.isSelected = false }
     }
 }
 

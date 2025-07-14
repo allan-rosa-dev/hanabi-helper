@@ -12,27 +12,52 @@ struct CardSelectView: View {
     @ObservedObject var cardGuess: CardGuess
     
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 10)
-                .frame(width: 50, height: 50)
-                .foregroundStyle(cardGuess.isSelected ? .black : .brown)
-                .onTapGesture {
-                    cardGuess.isSelected.toggle()
+        
+        VStack(spacing: 8) {
+            Circle()
+                .frame(width: 10, height: 10, alignment: .center)
+                .foregroundStyle(cardGuess.isOnMainDisplay ? .black : .clear)
+            ZStack {
+                RoundedRectangle(cornerRadius: 10)
+                    .frame(width: 50, height: 50)
+                    .foregroundStyle(color())
+                    .onTapGesture {
+                        cardGuess.isSelected.toggle()
+                    }
+                Text(text())
+                    .bold()
+                    .font(.system(size: 40))
+                    .foregroundStyle(.white)
+                    .stroke(color: .black)
+            }
+            .if(cardGuess.isSelected) { view in
+                view.overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.black, lineWidth: 5)
                 }
-            Text("?")
-                .foregroundStyle(.white)
-        }
-        .if(cardGuess.isOnMainDisplay) { view in
-            view.overlay {
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(.indigo, lineWidth: 5)
+            }
+            .if(!cardGuess.isSelected) { view in
+                view.overlay {
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(.gray, lineWidth: 5)
+                }
             }
         }
-        .if(!cardGuess.isOnMainDisplay) { view in
-            view.overlay {
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(.gray, lineWidth: 5)
-            }
+    }
+    
+    private func color() -> Color {
+        if cardGuess.possibleColors.count == 1 {
+            return cardGuess.possibleColors.first?.value ?? .gray
+        } else {
+            return .gray
+        }
+    }
+    
+    private func text() -> String {
+        if cardGuess.possibleNumbers.count == 1, let number = cardGuess.possibleNumbers.first {
+            return number.description
+        } else {
+            return "?"
         }
     }
 }
