@@ -11,8 +11,7 @@
 		9CA57DD62E05F341003CAC37 /* HintPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA57DD52E05F341003CAC37 /* HintPickerView.swift */; };
 		9CA705EB2E1D99BC0081939B /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CA705EA2E1D99BC0081939B /* View+Extensions.swift */; };
 		9CB7999E2E0A147A00B5375B /* CardSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7999D2E0A147A00B5375B /* CardSelectView.swift */; };
-		9CB799A02E0AD76300B5375B /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB7999F2E0AD76300B5375B /* GameBoard.swift */; };
-		9CB799A22E0AD8A300B5375B /* PlayedPile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A12E0AD8A300B5375B /* PlayedPile.swift */; };
+		9CB799A22E0AD8A300B5375B /* CardTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A12E0AD8A300B5375B /* CardTracker.swift */; };
 		9CB799A62E0ADF7400B5375B /* PlayedCardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A52E0ADF7400B5375B /* PlayedCardsView.swift */; };
 		9CB799A82E0AECBE00B5375B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A72E0AECBE00B5375B /* CardView.swift */; };
 		9CB799AA2E0B33EC00B5375B /* CardCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A92E0B33EC00B5375B /* CardCountView.swift */; };
@@ -35,8 +34,7 @@
 		9CA57DD52E05F341003CAC37 /* HintPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HintPickerView.swift; sourceTree = "<group>"; };
 		9CA705EA2E1D99BC0081939B /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		9CB7999D2E0A147A00B5375B /* CardSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSelectView.swift; sourceTree = "<group>"; };
-		9CB7999F2E0AD76300B5375B /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
-		9CB799A12E0AD8A300B5375B /* PlayedPile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedPile.swift; sourceTree = "<group>"; };
+		9CB799A12E0AD8A300B5375B /* CardTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTracker.swift; sourceTree = "<group>"; };
 		9CB799A52E0ADF7400B5375B /* PlayedCardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayedCardsView.swift; sourceTree = "<group>"; };
 		9CB799A72E0AECBE00B5375B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		9CB799A92E0B33EC00B5375B /* CardCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountView.swift; sourceTree = "<group>"; };
@@ -97,8 +95,7 @@
 			children = (
 				AC7222182D209B190029970C /* GameConfig.swift */,
 				AC7222102D20995D0029970C /* Deck.swift */,
-				9CB7999F2E0AD76300B5375B /* GameBoard.swift */,
-				9CB799A12E0AD8A300B5375B /* PlayedPile.swift */,
+				9CB799A12E0AD8A300B5375B /* CardTracker.swift */,
 			);
 			path = GameState;
 			sourceTree = "<group>";
@@ -240,7 +237,6 @@
 				9C0141702E0977310092A7F2 /* CardGuessView.swift in Sources */,
 				9CB799A62E0ADF7400B5375B /* PlayedCardsView.swift in Sources */,
 				AC7222152D2099A30029970C /* CardColor.swift in Sources */,
-				9CB799A02E0AD76300B5375B /* GameBoard.swift in Sources */,
 				9CA57DD62E05F341003CAC37 /* HintPickerView.swift in Sources */,
 				AC7222192D209B190029970C /* GameConfig.swift in Sources */,
 				AC72221B2D209DE50029970C /* CardGuess.swift in Sources */,
@@ -251,7 +247,7 @@
 				AC7222132D20997A0029970C /* Card.swift in Sources */,
 				AC72221D2D209EF80029970C /* Hint.swift in Sources */,
 				AC7222052D2097DA0029970C /* ContentView.swift in Sources */,
-				9CB799A22E0AD8A300B5375B /* PlayedPile.swift in Sources */,
+				9CB799A22E0AD8A300B5375B /* CardTracker.swift in Sources */,
 				9CB799A82E0AECBE00B5375B /* CardView.swift in Sources */,
 				9CF7BF742E2542780083EC4B /* StrokeModifier.swift in Sources */,
 				AC7222032D2097DA0029970C /* Hanabi_BrainApp.swift in Sources */,

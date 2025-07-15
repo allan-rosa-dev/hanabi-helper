@@ -1,0 +1,12 @@
+CORE:
+
+Improve deduction (count cards that were discarded/played)
+Lock out when card has been found out
+Add Manage Table Button (Input what was Played/Discarded)
+Add Reset Button
+Manage Game
+
+EXTRA:
+Undo Hint Button
+improve Button UX (Add animations/Color responsiveness to indicate if a button is clickable or not)
+Manual Mode Editing

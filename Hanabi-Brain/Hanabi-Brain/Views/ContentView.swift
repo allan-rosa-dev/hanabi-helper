@@ -36,6 +36,8 @@ struct ContentView: View {
                     PlayedCardsView()
                 } label: {
                     Text("Played Cards 🔎")
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.leading)
                 }
                 
                 ScrollViewReader { proxy in

@@ -76,14 +76,7 @@ fileprivate func generateCards(of color: CardColor) -> [Card] {
     var cards = [Card]()
 
     CardNumber.allCases.forEach { number in
-        switch number {
-        case .one:
-            cards.append(contentsOf: [Card](repeating: Card(color: color, number: number), count: 3))
-        case .two, .three, .four:
-            cards.append(contentsOf: [Card](repeating: Card(color: color, number: number), count: 2))
-        case .five:
-            cards.append(contentsOf: [Card](repeating: Card(color: color, number: number), count: 1))
-        }
+        cards.append(contentsOf: [Card](repeating: Card(color: color, number: number), count: number.totalCount))
     }
 
     return cards

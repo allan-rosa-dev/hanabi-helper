@@ -30,6 +30,14 @@ enum CardNumber: CaseIterable, Equatable {
         case .five: nil
         }
     }
+    
+    var totalCount: Int {
+        switch self {
+        case .one: 3
+        case .two, .three, .four: 2
+        case .five: 1
+        }
+    }
 }
 
 extension CardNumber: CustomStringConvertible {
