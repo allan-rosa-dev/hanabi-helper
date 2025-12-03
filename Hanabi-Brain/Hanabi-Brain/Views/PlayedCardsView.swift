@@ -8,68 +8,48 @@
 import SwiftUI
 
 struct PlayedCardsView: View {
-    @State var whiteTracker: CardTracker = CardTracker(color: .white, playedCards: [])
-    
-    @State var redTracker: CardTracker = CardTracker(color: .red)
-    
-    @State var greenTracker: CardTracker = CardTracker(
-        color: .green,
-        playedCards: [
-            Card(color: .green, number: .one),
-            Card(color: .green, number: .two),
-            Card(color: .green, number: .three),
-                     ],
-        discardedCards: [
-            Card(color: .green, number: .one),
-            Card(color: .green, number: .one),
-            Card(color: .green, number: .five),
-            Card(color: .green, number: .four),
-            Card(color: .green, number: .four)
-        ]
-    )
-    
-    @State var blueTracker: CardTracker = CardTracker(color: .blue)
-    
-    @State var yellowTracker: CardTracker = CardTracker(color: .yellow)
-    
+    @EnvironmentObject var gameBoard: GameBoard
     
     var body: some View {
-        Grid(verticalSpacing: 10) {
+        Button("Test") {
+            add(card: Card(color: .yellow, number: .one))
+        }
+        
+        Grid(verticalSpacing: 20) {
             ForEach(CardNumber.allCases) { number in
                 GridRow() {
                     Text(number.description)
                         .font(.system(size: 40))
                     
                     Grid(verticalSpacing: 5) {
-                        ForEach(1...number.totalCount, id: \.self) { iteration in
+                        ForEach(1...number.totalCount, id: \.self) { cardCount in
                             GridRow() {
                                 ForEach(CardColor.allCases) { color in
+                                    let numberOfSeenCards = gameBoard.tracker(of: color).count(of: number)
+                                    let isUsed: Bool = numberOfSeenCards < cardCount
+                                    
                                     Circle()
                                         .stroke(.black, lineWidth: 2)
                                         .fill(color.value)
                                         .frame(width: 20, height: 20)
-                                        .opacity(getTracker(of: color).count(of: number) < iteration ? 1 : 0.2)
+                                        .opacity(isUsed ? 1 : 0.1)
                                 }
                             }
                         }
                     }
-
                 }
             }
         }
     }
     
-    private func getTracker(of color: CardColor) -> CardTracker {
-        switch color {
-        case .red: redTracker
-        case .white: whiteTracker
-        case .blue: blueTracker
-        case .yellow: yellowTracker
-        case .green: greenTracker
-        }
+    func add(card: Card) {
+        gameBoard.discard(card: card)
     }
 }
 
 #Preview() {
+    let board = GameBoard()
+    
     PlayedCardsView()
+        .environmentObject(board)
 }

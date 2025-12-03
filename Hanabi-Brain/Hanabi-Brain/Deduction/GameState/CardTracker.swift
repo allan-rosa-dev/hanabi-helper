@@ -32,11 +32,9 @@ struct CardTracker {
         }
     }
     
-    mutating func discard(_ card: Card) -> Bool {
-        guard card.color == color else { return false }
+    mutating func discard(_ card: Card) {
+        guard card.color == color else { return }
         
         discardedCards.append(card)
-        
-        return true
     }
 }

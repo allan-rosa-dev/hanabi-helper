@@ -16,6 +16,7 @@
 		9CB799A82E0AECBE00B5375B /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A72E0AECBE00B5375B /* CardView.swift */; };
 		9CB799AA2E0B33EC00B5375B /* CardCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CB799A92E0B33EC00B5375B /* CardCountView.swift */; };
 		9CF7BF742E2542780083EC4B /* StrokeModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF7BF732E2542780083EC4B /* StrokeModifier.swift */; };
+		9CF7BF782E2723210083EC4B /* GameBoard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9CF7BF772E2723210083EC4B /* GameBoard.swift */; };
 		AC7222032D2097DA0029970C /* Hanabi_BrainApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7222022D2097DA0029970C /* Hanabi_BrainApp.swift */; };
 		AC7222052D2097DA0029970C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7222042D2097DA0029970C /* ContentView.swift */; };
 		AC7222072D2097DC0029970C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC7222062D2097DC0029970C /* Assets.xcassets */; };
@@ -39,6 +40,7 @@
 		9CB799A72E0AECBE00B5375B /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		9CB799A92E0B33EC00B5375B /* CardCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCountView.swift; sourceTree = "<group>"; };
 		9CF7BF732E2542780083EC4B /* StrokeModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeModifier.swift; sourceTree = "<group>"; };
+		9CF7BF772E2723210083EC4B /* GameBoard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameBoard.swift; sourceTree = "<group>"; };
 		AC7221FF2D2097DA0029970C /* Hanabi-Brain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hanabi-Brain.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC7222022D2097DA0029970C /* Hanabi_BrainApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hanabi_BrainApp.swift; sourceTree = "<group>"; };
 		AC7222042D2097DA0029970C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				AC7222182D209B190029970C /* GameConfig.swift */,
 				AC7222102D20995D0029970C /* Deck.swift */,
 				9CB799A12E0AD8A300B5375B /* CardTracker.swift */,
+				9CF7BF772E2723210083EC4B /* GameBoard.swift */,
 			);
 			path = GameState;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AC7222172D2099D00029970C /* CardNumber.swift in Sources */,
+				9CF7BF782E2723210083EC4B /* GameBoard.swift in Sources */,
 				9C0141702E0977310092A7F2 /* CardGuessView.swift in Sources */,
 				9CB799A62E0ADF7400B5375B /* PlayedCardsView.swift in Sources */,
 				AC7222152D2099A30029970C /* CardColor.swift in Sources */,

@@ -49,7 +49,7 @@ class CardGuess: ObservableObject {
 
 extension CardGuess {
 	private func assert(have: Bool, number: CardNumber) {
-        // TODO: - Implement Clue giving error / throw & handling
+        // TODO: - Implement Clue error / throw & handling
         guard possibleNumbers.count > 1 && possibleNumbers.contains(number) else { return }
 		if have {
 			possibleNumbers = possibleNumbers.filter { $0 == number }

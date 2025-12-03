@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     let gameConfig = GameConfig(mode: .regular, numberOfPlayers: .two)
+    
+    @StateObject var gameBoard = GameBoard()
+    
     @State var cardGuesses: [CardGuess] = [
         CardGuess(isFocused: true),
         CardGuess(),
@@ -34,6 +37,7 @@ struct ContentView: View {
             VStack {
                 NavigationLink {
                     PlayedCardsView()
+                        .environmentObject(gameBoard)
                 } label: {
                     Text("Played Cards 🔎")
                         .frame(maxWidth: .infinity, alignment: .leading)

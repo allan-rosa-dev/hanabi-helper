@@ -8,8 +8,8 @@
 import Foundation
 
 enum CardNumber: CaseIterable, Equatable {
-	
-	case one, two, three, four, five
+    
+    case one, two, three, four, five
     
     var value: Int {
         switch self {
@@ -41,18 +41,18 @@ enum CardNumber: CaseIterable, Equatable {
 }
 
 extension CardNumber: CustomStringConvertible {
-	var description: String {
-		switch self {
-		case .one: "1"
-		case .two: "2"
-		case .three: "3"
-		case .four: "4"
-		case .five: "5"
-		}
-	}
+    var description: String {
+        switch self {
+        case .one: "1"
+        case .two: "2"
+        case .three: "3"
+        case .four: "4"
+        case .five: "5"
+        }
+    }
 }
 
 extension CardNumber: Identifiable {
-	
-	var id: Self { self }
+    
+    var id: Self { self }
 }
